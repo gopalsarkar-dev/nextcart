@@ -1,3 +1,4 @@
+import TopBar from "@/components/Header/TopBar";
 import "./globals.css";
 
 type RootLayoutProvideProps = {
@@ -8,7 +9,8 @@ const RootLayout = ({ children }: RootLayoutProvideProps) => {
   return (
     <html lang="en">
       <body>
-        <main className="">{children}</main>
+        <TopBar />
+        <main className="mx-auto max-w-7xl px-6 py-4">{children}</main>
       </body>
     </html>
   );
