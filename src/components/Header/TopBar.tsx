@@ -12,7 +12,9 @@ const TopBar = () => {
 
           <div className="flex items-center justify-center gap-4">
             <SunMoon size={30} />
-            <ShoppingCart className="cursor-pointer" size={30} />
+            <Link href="/checkout-cart">
+              <ShoppingCart className="cursor-pointer" size={30} />
+            </Link>
           </div>
         </section>
       </nav>
