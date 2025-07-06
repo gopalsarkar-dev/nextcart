@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter } from "./ui/card";
 import { DataType } from "@/lib/type";
 import { useAtom } from "jotai";
 import { cartAtom } from "@/lib/atom";
+import Image from "next/image";
 
 type CardProps = {
   cardInfo: DataType;
@@ -34,7 +35,14 @@ const CardItemDisplay = ({ cardInfo }: CardProps) => {
     <>
       <Card className="w-[320px]">
         <CardContent className="space-y-3">
-          <div className="text-lg font-bold sm:text-lg">Product_Imag :</div>
+          <div className="grid place-items-center">
+            <Image
+              src={cardInfo.product_imag}
+              alt="cart-Info"
+              width={200}
+              height={200}
+            />
+          </div>
           <div className="text-lg font-bold sm:text-lg">
             Product_Name : {cardInfo.product_name}
           </div>
