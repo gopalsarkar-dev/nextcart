@@ -1,8 +1,10 @@
+import CheckOutComp from "@/components/CheckOutComp";
+
 const page = () => {
   return (
     <>
       <div className="pt-16">
-        <div className="">checkout-cart Page</div>
+        <CheckOutComp />
       </div>
     </>
   );
