@@ -5,6 +5,7 @@ import { useAtom } from "jotai";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { Trash2 } from "lucide-react";
 
 const CheckOutComp = () => {
   const [cartItem, setCartItem] = useAtom(cartAtom);
@@ -31,6 +32,15 @@ const CheckOutComp = () => {
     });
 
     setCartItem(updatedCart);
+  };
+
+  // remove item from cart
+
+  const handelRemoveFn = (id: string) => {
+    const itemIncrement = cartItem.filter((items) => items.id !== id);
+
+    setCartItem(itemIncrement);
+    console.log(id);
   };
 
   if (cartItem.length === 0) {
@@ -61,20 +71,28 @@ const CheckOutComp = () => {
               </div>
               <div className="font-bold">Quantity : {item.quantity}</div>
             </CardContent>
-            <CardFooter className="flex gap-3">
+            <CardFooter className="flex items-center justify-between">
+              <div className="flex gap-3">
+                <Button
+                  className="cursor-pointer"
+                  size={"icon"}
+                  onClick={() => incrementButton(item.id)}
+                >
+                  +
+                </Button>
+                <Button
+                  className="cursor-pointer"
+                  size={"icon"}
+                  onClick={() => decrementButton(item.id)}
+                >
+                  -
+                </Button>
+              </div>
               <Button
                 className="cursor-pointer"
-                size={"icon"}
-                onClick={() => incrementButton(item.id)}
+                onClick={() => handelRemoveFn(item.id)}
               >
-                +
-              </Button>
-              <Button
-                className="cursor-pointer"
-                size={"icon"}
-                onClick={() => decrementButton(item.id)}
-              >
-                -
+                Delet Item <Trash2 />
               </Button>
             </CardFooter>
           </Card>
