@@ -20,6 +20,18 @@ const CheckOutComp = () => {
 
     // console.log(id);
   };
+  // decrement product quantity button
+
+  const decrementButton = (id: string) => {
+    const updatedCart = cartItem.map((item) => {
+      if (item.id === id && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+
+    setCartItem(updatedCart);
+  };
 
   if (cartItem.length === 0) {
     return (
@@ -57,7 +69,11 @@ const CheckOutComp = () => {
               >
                 +
               </Button>
-              <Button className="cursor-pointer" size={"icon"}>
+              <Button
+                className="cursor-pointer"
+                size={"icon"}
+                onClick={() => decrementButton(item.id)}
+              >
                 -
               </Button>
             </CardFooter>
