@@ -43,6 +43,12 @@ const CheckOutComp = () => {
     console.log(id);
   };
 
+  // total price for every product quantity
+
+  const totalPrice = (price: number, quantity: number) => {
+    return price * quantity;
+  };
+
   if (cartItem.length === 0) {
     return (
       <div className="grid h-[85dvh] place-items-center">
@@ -70,6 +76,9 @@ const CheckOutComp = () => {
                 Product Price : $-{item.product_price}
               </div>
               <div className="font-bold">Quantity : {item.quantity}</div>
+              <div className="font-bold">
+                Total Price : $-{totalPrice(item.product_price, item.quantity)}
+              </div>
             </CardContent>
             <CardFooter className="flex items-center justify-between">
               <div className="flex gap-3">
