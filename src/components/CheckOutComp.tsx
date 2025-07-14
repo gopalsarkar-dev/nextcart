@@ -49,6 +49,15 @@ const CheckOutComp = () => {
     return price * quantity;
   };
 
+  // Calculate Total Price funcion
+
+  const calculateTotalFn = () => {
+    return cartItem.reduce(
+      (sum, item) => sum + item.product_price * item.quantity,
+      0,
+    );
+  };
+
   if (cartItem.length === 0) {
     return (
       <div className="grid h-[85dvh] place-items-center">
@@ -61,7 +70,7 @@ const CheckOutComp = () => {
     <>
       <div className="grid gap-5">
         {cartItem.map((item) => (
-          <Card key={item.id} className="w-[320px]">
+          <Card key={item.id} className="sm:w-full">
             <CardContent>
               <Image
                 src={item.product_imag}
@@ -106,6 +115,10 @@ const CheckOutComp = () => {
             </CardFooter>
           </Card>
         ))}
+        <hr className="mt-4 w-full" />
+        <div className="text-right text-2xl font-bold">
+          Calculate Total Price : $- {calculateTotalFn()}
+        </div>
       </div>
     </>
   );
