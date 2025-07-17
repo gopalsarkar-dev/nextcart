@@ -3,6 +3,7 @@ import { cartAtom } from "@/lib/atom";
 import { useAtom } from "jotai";
 import { ShoppingCart, SunMoon } from "lucide-react";
 import Link from "next/link";
+import DarkMode from "../DarkMode";
 
 const TopBar = () => {
   const [cartItem] = useAtom(cartAtom);
@@ -15,7 +16,7 @@ const TopBar = () => {
             NextCart
           </Link>
           <div className="flex items-center justify-center gap-4">
-            <SunMoon />
+            <DarkMode />
             <Link href="/checkout-cart">
               <div className="flex cursor-pointer items-center justify-center">
                 <ShoppingCart />
